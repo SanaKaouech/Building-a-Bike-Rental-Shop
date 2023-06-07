@@ -1,0 +1,586 @@
+codeally@8b8ba1f5049e:~/project$ echo hello terminal
+hello terminal
+codeally@8b8ba1f5049e:~/project$ psql --username=freecodecamp --dbname=postgres
+Border style is 2.
+Title is " ".
+Pager usage is off.
+psql (12.9 (Ubuntu 12.9-2.pgdg20.04+1))
+Type "help" for help.
+
+postgres=> \l
+postgres=>                                List of databases
++-----------+----------+----------+---------+---------+-----------------------+
+|   Name    |  Owner   | Encoding | Collate |  Ctype  |   Access privileges   |
++-----------+----------+----------+---------+---------+-----------------------+
+| postgres  | postgres | UTF8     | C.UTF-8 | C.UTF-8 |                       |
+| template0 | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
+|           |          |          |         |         | postgres=CTc/postgres |
+| template1 | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
+|           |          |          |         |         | postgres=CTc/postgres |
++-----------+----------+----------+---------+---------+-----------------------+
+(3 rows)
+
+CREATE DATABASE bikes;
+CREATE DATABASE
+postgres=> \l
+                                 List of databases
++-----------+--------------+----------+---------+---------+-----------------------+
+|   Name    |    Owner     | Encoding | Collate |  Ctype  |   Access privileges   |
++-----------+--------------+----------+---------+---------+-----------------------+
+| bikes     | freecodecamp | UTF8     | C.UTF-8 | C.UTF-8 |                       |
+| postgres  | postgres     | UTF8     | C.UTF-8 | C.UTF-8 |                       |
+| template0 | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
+|           |              |          |         |         | postgres=CTc/postgres |
+| template1 | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
+|           |              |          |         |         | postgres=CTc/postgres |
++-----------+--------------+----------+---------+---------+-----------------------+
+(4 rows)
+
+postgres=> \c bikes
+You are now connected to database "bikes" as user "freecodecamp".
+bikes=> CREATE TABLE bikes();
+CREATE TABLE
+bikes=> \d bikes
+bikes=>                Table "public.bikes"
++--------+------+-----------+----------+---------+
+| Column | Type | Collation | Nullable | Default |
++--------+------+-----------+----------+---------+
++--------+------+-----------+----------+---------+
+
+\d
+bikes=>             List of relations
++--------+-------+-------+--------------+
+| Schema | Name  | Type  |    Owner     |
++--------+-------+-------+--------------+
+| public | bikes | table | freecodecamp |
++--------+-------+-------+--------------+
+(1 row)
+
+ALTER TABLE bikes ADD COLUMN bike_id SERIAL PRIMARY KEY;
+bikes=> ALTER TABLE
+\d bikes
+bikes=>                                 Table "public.bikes"
++---------+---------+-----------+----------+----------------------------------------+
+| Column  |  Type   | Collation | Nullable |                Default                 |
++---------+---------+-----------+----------+----------------------------------------+
+| bike_id | integer |           | not null | nextval('bikes_bike_id_seq'::regclass) |
++---------+---------+-----------+----------+----------------------------------------+
+Indexes:
+    "bikes_pkey" PRIMARY KEY, btree (bike_id)
+
+ALTER TABLE bikes ADD COLUMN type VARCHAR(50) NOT NULL;
+ALTER TABLE
+bikes=> \d bikes
+bikes=>                                        Table "public.bikes"
++---------+-----------------------+-----------+----------+----------------------------------------+
+| Column  |         Type          | Collation | Nullable |                Default                 |
++---------+-----------------------+-----------+----------+----------------------------------------+
+| bike_id | integer               |           | not null | nextval('bikes_bike_id_seq'::regclass) |
+| type    | character varying(50) |           | not null |                                        |
++---------+-----------------------+-----------+----------+----------------------------------------+
+Indexes:
+    "bikes_pkey" PRIMARY KEY, btree (bike_id)
+
+ALTER TABLE bikes ADD COLUMN size INT NOT NULL;
+bikes=> ALTER TABLE
+ALTER TABLE bikes ADD COLUMN avaible BOOLEAN NOT NULL DEFAULT TRUE;
+bikes=> ALTER TABLE
+ALTER TABLE bikes DROP COLUMN avaible;
+bikes=> ALTER TABLE
+ALTER TABLE bikes ADD COLUMN available BOOLEAN NOT NULL DEFAULT TRUE;
+bikes=> ALTER TABLE
+\d bikes
+bikes=>                                         Table "public.bikes"
++-----------+-----------------------+-----------+----------+----------------------------------------+
+|  Column   |         Type          | Collation | Nullable |                Default                 |
++-----------+-----------------------+-----------+----------+----------------------------------------+
+| bike_id   | integer               |           | not null | nextval('bikes_bike_id_seq'::regclass) |
+| type      | character varying(50) |           | not null |                                        |
+| size      | integer               |           | not null |                                        |
+| available | boolean               |           | not null | true                                   |
++-----------+-----------------------+-----------+----------+----------------------------------------+
+Indexes:
+    "bikes_pkey" PRIMARY KEY, btree (bike_id)
+
+CREATE TABLE customers();
+bikes=> CREATE TABLE
+ALTER TABLE customers ADD COLUMN coustomer_id SERIAL PRIMARY KEY;
+bikes=> ALTER TABLE
+ALTER TABLE customers DROP COLUMN coustomer_id;
+ALTER TABLE
+bikes=> ALTER TABLE customers ADD COLUMN customer_id SERIAL PRIMARY KEY;
+ALTER TABLE
+bikes=> \d customers
+bikes=>                                     Table "public.customers"
++-------------+---------+-----------+----------+------------------------------------------------+
+|   Column    |  Type   | Collation | Nullable |                    Default                     |
++-------------+---------+-----------+----------+------------------------------------------------+
+| customer_id | integer |           | not null | nextval('customers_customer_id_seq'::regclass) |
++-------------+---------+-----------+----------+------------------------------------------------+
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+
+ALTER TABLE bikes ADD COLUMN phone VARCHAR(15) UNIQUE NOT NULL;
+bikes=> ALTER TABLE
+ALTER TABLE bikes DROP COLUMN phone;
+bikes=> ALTER TABLE
+ALTER TABLE customers ADD COLUMN phone VARCHAR(15) UNIQUE NOT NULL;
+bikes=> ALTER TABLE
+ALTER TABLE customers ADD COLUMN name VARCHAR(40) NOT NULL;
+bikes=> ALTER TABLE
+\d customers
+bikes=>                                            Table "public.customers"
++-------------+-----------------------+-----------+----------+------------------------------------------------+
+|   Column    |         Type          | Collation | Nullable |                    Default                     |
++-------------+-----------------------+-----------+----------+------------------------------------------------+
+| customer_id | integer               |           | not null | nextval('customers_customer_id_seq'::regclass) |
+| phone       | character varying(15) |           | not null |                                                |
+| name        | character varying(40) |           | not null |                                                |
++-------------+-----------------------+-----------+----------+------------------------------------------------+
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+
+bikes=> 
+bikes=> CREATE TABLE rentals;
+ERROR:  syntax error at or near ";"
+LINE 1: CREATE TABLE rentals;
+                            ^
+bikes=> CREATE TABLE rentals();
+bikes=> CREATE TABLE
+ALTER TABLE rentals ADD COLUMN rental_id SERIAL PRIMARY KEY;
+bikes=> ALTER TABLE
+\d rentals
+bikes=>                                   Table "public.rentals"
++-----------+---------+-----------+----------+--------------------------------------------+
+|  Column   |  Type   | Collation | Nullable |                  Default                   |
++-----------+---------+-----------+----------+--------------------------------------------+
+| rental_id | integer |           | not null | nextval('rentals_rental_id_seq'::regclass) |
++-----------+---------+-----------+----------+--------------------------------------------+
+Indexes:
+    "rentals_pkey" PRIMARY KEY, btree (rental_id)
+
+ALTER TABLE rentals ADD COLUMN customer_id INT NOT NULL;
+ALTER TABLE
+bikes=> ALTER TABLE rentals ADD FOREIGN KEY(customer_id) REFERENCES customers(customer_id);
+bikes=> ALTER TABLE
+\d rentals
+                                   Table "public.rentals"
++-------------+---------+-----------+----------+--------------------------------------------+
+|   Column    |  Type   | Collation | Nullable |                  Default                   |
++-------------+---------+-----------+----------+--------------------------------------------+
+| rental_id   | integer |           | not null | nextval('rentals_rental_id_seq'::regclass) |
+| customer_id | integer |           | not null |                                            |
++-------------+---------+-----------+----------+--------------------------------------------+
+Indexes:
+    "rentals_pkey" PRIMARY KEY, btree (rental_id)
+Foreign-key constraints:
+    "rentals_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+bikes=> ALTER TABLE rentals ADD COLUMN bike_id INT NOT NULL;
+bikes=> ALTER TABLE
+bikes=> ALTER TABLE rentals ADD FOREIGN KEY(bike_id) REFERENCES bikes(bike_id);
+ALTER TABLE
+bikes=> \d rentals
+bikes=>                                    Table "public.rentals"
++-------------+---------+-----------+----------+--------------------------------------------+
+|   Column    |  Type   | Collation | Nullable |                  Default                   |
++-------------+---------+-----------+----------+--------------------------------------------+
+| rental_id   | integer |           | not null | nextval('rentals_rental_id_seq'::regclass) |
+| customer_id | integer |           | not null |                                            |
+| bike_id     | integer |           | not null |                                            |
++-------------+---------+-----------+----------+--------------------------------------------+
+Indexes:
+    "rentals_pkey" PRIMARY KEY, btree (rental_id)
+Foreign-key constraints:
+    "rentals_bike_id_fkey" FOREIGN KEY (bike_id) REFERENCES bikes(bike_id)
+    "rentals_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+ALTER TABLE rentals ADD COLUMN date_rented DATE NOT NULL DEFAULT NOW();
+ALTER TABLE
+bikes=> \d rentals
+bikes=>                                    Table "public.rentals"
++-------------+---------+-----------+----------+--------------------------------------------+
+|   Column    |  Type   | Collation | Nullable |                  Default                   |
++-------------+---------+-----------+----------+--------------------------------------------+
+| rental_id   | integer |           | not null | nextval('rentals_rental_id_seq'::regclass) |
+| customer_id | integer |           | not null |                                            |
+| bike_id     | integer |           | not null |                                            |
+| date_rented | date    |           | not null | now()                                      |
++-------------+---------+-----------+----------+--------------------------------------------+
+Indexes:
+    "rentals_pkey" PRIMARY KEY, btree (rental_id)
+Foreign-key constraints:
+    "rentals_bike_id_fkey" FOREIGN KEY (bike_id) REFERENCES bikes(bike_id)
+    "rentals_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+ALTER TABLE rentals ADD COLUMN date_returned DATE;
+bikes=> ALTER TABLE
+\d rentals
+bikes=>                                     Table "public.rentals"
++---------------+---------+-----------+----------+--------------------------------------------+
+|    Column     |  Type   | Collation | Nullable |                  Default                   |
++---------------+---------+-----------+----------+--------------------------------------------+
+| rental_id     | integer |           | not null | nextval('rentals_rental_id_seq'::regclass) |
+| customer_id   | integer |           | not null |                                            |
+| bike_id       | integer |           | not null |                                            |
+| date_rented   | date    |           | not null | now()                                      |
+| date_returned | date    |           |          |                                            |
++---------------+---------+-----------+----------+--------------------------------------------+
+Indexes:
+    "rentals_pkey" PRIMARY KEY, btree (rental_id)
+Foreign-key constraints:
+    "rentals_bike_id_fkey" FOREIGN KEY (bike_id) REFERENCES bikes(bike_id)
+    "rentals_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+\d
+bikes=>                        List of relations
++--------+---------------------------+----------+--------------+
+| Schema |           Name            |   Type   |    Owner     |
++--------+---------------------------+----------+--------------+
+| public | bikes                     | table    | freecodecamp |
+| public | bikes_bike_id_seq         | sequence | freecodecamp |
+| public | customers                 | table    | freecodecamp |
+| public | customers_customer_id_seq | sequence | freecodecamp |
+| public | rentals                   | table    | freecodecamp |
+| public | rentals_rental_id_seq     | sequence | freecodecamp |
++--------+---------------------------+----------+--------------+
+(6 rows)
+
+INSERT INTO bikes(type, size) VALUES('Mountain', 27);
+bikes=> INSERT 0 1
+SELECT * FROM bikes;
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | t         |
++---------+----------+------+-----------+
+(1 row)
+
+bikes=> INSERT INTO bikes(type, size) VALUES('Mountain', 28);
+bikes=> INSERT 0 1
+INSERT INTO bikes(type, size) VALUES('Mountain', 29);
+bikes=> INSERT 0 1
+INSERT INTO bikes(type, size) VALUES('Road', 27);
+bikes=> INSERT 0 1
+SELECT * FROM bikes;
+bikes=>                      
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | t         |
+|       2 | Mountain |   28 | t         |
+|       3 | Mountain |   29 | t         |
+|       4 | Road     |   27 | t         |
++---------+----------+------+-----------+
+(4 rows)
+
+SELECT * FROM bikes;
+ERROR:  syntax error at or near "FROM"
+LINE 1: FROM bikes;
+        ^
+bikes=> INSERT INTO bikes(type, size) VALUES('Road', 28), ('Road', 29);
+INSERT 0 2
+bikes=> INSERT INTO bikes(type, size) VALUES('BMX', 19), ('BMX', 20), ('BMX', 21);
+INSERT 0 3
+bikes=> SELECT * FROM bikes;
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | t         |
+|       2 | Mountain |   28 | t         |
+|       3 | Mountain |   29 | t         |
+|       4 | Road     |   27 | t         |
+|       5 | Road     |   28 | t         |
+|       6 | Road     |   29 | t         |
+|       7 | BMX      |   19 | t         |
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
+bikes=> UPDATE bikes SET available = false;
+bikes=> UPDATE bikes SET available = true WHERE type != 'BMX';
+bikes=> UPDATE 6
+bikes=> UPDATE bikes SET available = true WHERE available = false;
+bikes=> UPDATE 3
+SELECT * FROM customers;
+bikes=>                  
++-------------+----------+------+
+| customer_id |  phone   | name |
++-------------+----------+------+
+|           1 | 555-5555 | Me   |
++-------------+----------+------+
+(1 row)
+
+SELECT * FROM rentals;
+bikes=>                                   
++-----------+-------------+---------+-------------+---------------+
+| rental_id | customer_id | bike_id | date_rented | date_returned |
++-----------+-------------+---------+-------------+---------------+
++-----------+-------------+---------+-------------+---------------+
+(0 rows)
+
+bikes=> SELECT * FROM bikes;
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | t         |
+|       2 | Mountain |   28 | t         |
+|       3 | Mountain |   29 | t         |
+|       4 | Road     |   27 | t         |
+|       5 | Road     |   28 | t         |
+|       6 | Road     |   29 | t         |
+|       7 | BMX      |   19 | t         |
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
+bikes=> SELECT * FROM rentals;
+                                  
++-----------+-------------+---------+-------------+---------------+
+| rental_id | customer_id | bike_id | date_rented | date_returned |
++-----------+-------------+---------+-------------+---------------+
+|         1 |           1 |       1 | 2023-06-07  |               |
++-----------+-------------+---------+-------------+---------------+
+(1 row)
+
+bikes=> SELECT * FROM bikes ORDER BY bike_id;
+bikes=>                      
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | f         |
+|       2 | Mountain |   28 | t         |
+|       3 | Mountain |   29 | t         |
+|       4 | Road     |   27 | t         |
+|       5 | Road     |   28 | t         |
+|       6 | Road     |   29 | t         |
+|       7 | BMX      |   19 | t         |
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
+bikes=> SELECT * FROM bikes ORDER BY bike_id;
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | f         |
+|       2 | Mountain |   28 | f         |
+|       3 | Mountain |   29 | f         |
+|       4 | Road     |   27 | f         |
+|       5 | Road     |   28 | f         |
+|       6 | Road     |   29 | f         |
+|       7 | BMX      |   19 | f         |
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
+bikes=> SELECT * FROM customers;
+bikes=>                  
++-------------+----------+------+
+| customer_id |  phone   | name |
++-------------+----------+------+
+|           1 | 555-5555 | Me   |
+|           2 | 000-0000 | Test |
++-------------+----------+------+
+(2 rows)
+
+SELECT * FROM rentals;
+bikes=>                                   
++-----------+-------------+---------+-------------+---------------+
+| rental_id | customer_id | bike_id | date_rented | date_returned |
++-----------+-------------+---------+-------------+---------------+
+|         1 |           1 |       1 | 2023-06-07  |               |
+|         2 |           1 |       2 | 2023-06-08  |               |
+|         3 |           1 |       3 | 2023-06-08  |               |
+|         4 |           1 |       4 | 2023-06-08  |               |
+|         5 |           1 |       5 | 2023-06-08  |               |
+|         6 |           2 |       6 | 2023-06-08  |               |
+|         7 |           2 |       7 | 2023-06-08  |               |
++-----------+-------------+---------+-------------+---------------+
+(7 rows)
+
+bikes=> SELECT * FROM bikes;
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
+|       1 | Mountain |   27 | f         |
+|       2 | Mountain |   28 | f         |
+|       3 | Mountain |   29 | f         |
+|       4 | Road     |   27 | f         |
+|       5 | Road     |   28 | f         |
+|       6 | Road     |   29 | f         |
+|       7 | BMX      |   19 | f         |
++---------+----------+------+-----------+
+(9 rows)
+
+bikes=> SELECT * FROM bikes LEFT JOIN rentals USING(bike_id);
+bikes=>                                                  
++---------+----------+------+-----------+-----------+-------------+-------------+---------------+
+| bike_id |   type   | size | available | rental_id | customer_id | date_rented | date_returned |
++---------+----------+------+-----------+-----------+-------------+-------------+---------------+
+|       1 | Mountain |   27 | f         |         1 |           1 | 2023-06-07  |               |
+|       2 | Mountain |   28 | f         |         2 |           1 | 2023-06-08  |               |
+|       3 | Mountain |   29 | f         |         3 |           1 | 2023-06-08  |               |
+|       4 | Road     |   27 | f         |         4 |           1 | 2023-06-08  |               |
+|       5 | Road     |   28 | f         |         5 |           1 | 2023-06-08  |               |
+|       6 | Road     |   29 | f         |         6 |           2 | 2023-06-08  |               |
+|       7 | BMX      |   19 | f         |         7 |           2 | 2023-06-08  |               |
+|       8 | BMX      |   20 | t         |           |             |             |               |
+|       9 | BMX      |   21 | t         |           |             |             |               |
++---------+----------+------+-----------+-----------+-------------+-------------+---------------+
+(9 rows)
+
+SELECT * FROM bikes INNER JOIN rentals USING(bike_id);
+ERROR:  syntax error at or near "FROINNER"
+LINE 1: SELECT * FROINNER JOIN rentals USING(bike_id);
+                 ^
+bikes=> SELECT * FROM bikes INNER JOIN rentals USING(bike_id);
+                                                 
++---------+----------+------+-----------+-----------+-------------+-------------+---------------+
+| bike_id |   type   | size | available | rental_id | customer_id | date_rented | date_returned |
++---------+----------+------+-----------+-----------+-------------+-------------+---------------+
+|       1 | Mountain |   27 | f         |         1 |           1 | 2023-06-07  |               |
+|       2 | Mountain |   28 | f         |         2 |           1 | 2023-06-08  |               |
+|       3 | Mountain |   29 | f         |         3 |           1 | 2023-06-08  |               |
+|       4 | Road     |   27 | f         |         4 |           1 | 2023-06-08  |               |
+|       5 | Road     |   28 | f         |         5 |           1 | 2023-06-08  |               |
+|       6 | Road     |   29 | f         |         6 |           2 | 2023-06-08  |               |
+|       7 | BMX      |   19 | f         |         7 |           2 | 2023-06-08  |               |
++---------+----------+------+-----------+-----------+-------------+-------------+---------------+
+(7 rows)
+
+bikes=> SELECT * FROM bikes INNER JOIN rentals USING(bike_id) INNER JOIN customers USING(customer_id);
+bikes=>                                                           
++-------------+---------+----------+------+-----------+-----------+-------------+---------------+----------+------+
+| customer_id | bike_id |   type   | size | available | rental_id | date_rented | date_returned |  phone   | name |
++-------------+---------+----------+------+-----------+-----------+-------------+---------------+----------+------+
+|           1 |       1 | Mountain |   27 | f         |         1 | 2023-06-07  |               | 555-5555 | Me   |
+|           1 |       2 | Mountain |   28 | f         |         2 | 2023-06-08  |               | 555-5555 | Me   |
+|           1 |       3 | Mountain |   29 | f         |         3 | 2023-06-08  |               | 555-5555 | Me   |
+|           1 |       4 | Road     |   27 | f         |         4 | 2023-06-08  |               | 555-5555 | Me   |
+|           1 |       5 | Road     |   28 | f         |         5 | 2023-06-08  |               | 555-5555 | Me   |
+|           2 |       6 | Road     |   29 | f         |         6 | 2023-06-08  |               | 000-0000 | Test |
+|           2 |       7 | BMX      |   19 | f         |         7 | 2023-06-08  |               | 000-0000 | Test |
++-------------+---------+----------+------+-----------+-----------+-------------+---------------+----------+------+
+(7 rows)
+
+bikes=> SELECT * FROM bikes INNER JOIN rentals USING(bike_id) INNER JOIN customers USING(customer_id) WHERE phone = '555-5555' AND date_returned IS NULL;
+bikes=>                                                           
++-------------+---------+----------+------+-----------+-----------+-------------+---------------+----------+------+
+| customer_id | bike_id |   type   | size | available | rental_id | date_rented | date_returned |  phone   | name |
++-------------+---------+----------+------+-----------+-----------+-------------+---------------+----------+------+
+|           1 |       1 | Mountain |   27 | f         |         1 | 2023-06-07  |               | 555-5555 | Me   |
+|           1 |       2 | Mountain |   28 | f         |         2 | 2023-06-08  |               | 555-5555 | Me   |
+|           1 |       3 | Mountain |   29 | f         |         3 | 2023-06-08  |               | 555-5555 | Me   |
+|           1 |       4 | Road     |   27 | f         |         4 | 2023-06-08  |               | 555-5555 | Me   |
+|           1 |       5 | Road     |   28 | f         |         5 | 2023-06-08  |               | 555-5555 | Me   |
++-------------+---------+----------+------+-----------+-----------+-------------+---------------+----------+------+
+(5 rows)
+
+entals USING(bike_id) INNER JOIN customers USING(customers_id) WHERE phone = '555-5555' AND date_returned IS NULL;
+ERROR:  column "customers_id" specified in USING clause does not exist in left table
+bikes=> SELECT bike_id, type, size FROM bikes INNER JOIN rentals USING(bike_id) INNER JOIN customers USING(customer_id) WHERE phone = '555-5555' AND date_returned IS NULL;
+bikes=>                
++---------+----------+------+
+| bike_id |   type   | size |
++---------+----------+------+
+|       1 | Mountain |   27 |
+|       2 | Mountain |   28 |
+|       3 | Mountain |   29 |
+|       4 | Road     |   27 |
+|       5 | Road     |   28 |
++---------+----------+------+
+(5 rows)
+
+SELECT bike_id, type, size FROM bikes INNER JOIN rentals USING(bike_id) INNER JOIN customers USING(customer_id) WHERE phone = '555-5555' AND date_returned IS NULL ORDER BY bike_id;
+bikes=>                
++---------+----------+------+
+| bike_id |   type   | size |
++---------+----------+------+
+|       1 | Mountain |   27 |
+|       2 | Mountain |   28 |
+|       3 | Mountain |   29 |
+|       4 | Road     |   27 |
+|       5 | Road     |   28 |
++---------+----------+------+
+(5 rows)
+
+bikes=> SELECT * FROM rentals INNER JOIN customers USING(customer_id);
+bikes=>                                            
++-------------+-----------+---------+-------------+---------------+----------+------+
+| customer_id | rental_id | bike_id | date_rented | date_returned |  phone   | name |
++-------------+-----------+---------+-------------+---------------+----------+------+
+|           1 |         1 |       1 | 2023-06-07  |               | 555-5555 | Me   |
+|           1 |         2 |       2 | 2023-06-08  |               | 555-5555 | Me   |
+|           1 |         3 |       3 | 2023-06-08  |               | 555-5555 | Me   |
+|           1 |         4 |       4 | 2023-06-08  |               | 555-5555 | Me   |
+|           1 |         5 |       5 | 2023-06-08  |               | 555-5555 | Me   |
+|           2 |         6 |       6 | 2023-06-08  |               | 000-0000 | Test |
+|           2 |         7 |       7 | 2023-06-08  |               | 000-0000 | Test |
++-------------+-----------+---------+-------------+---------------+----------+------+
+(7 rows)
+
+bikes=> SELECT * FROM rentals INNER JOIN customers USING(customer_id) WHERE phone = '555-5555' AND bike_id = 1 AND date_returned IS NULL;
+                                           
++-------------+-----------+---------+-------------+---------------+----------+------+
+| customer_id | rental_id | bike_id | date_rented | date_returned |  phone   | name |
++-------------+-----------+---------+-------------+---------------+----------+------+
+|           1 |         1 |       1 | 2023-06-07  |               | 555-5555 | Me   |
++-------------+-----------+---------+-------------+---------------+----------+------+
+(1 row)
+
+bikes=> SELECT rental_id FROM rentals INNER JOIN customers USING(customer_id) WHERE phone = '555-5555' AND bike_id = 1 AND date_returned IS NULL;
+       
++-----------+
+| rental_id |
++-----------+
+|         1 |
++-----------+
+(1 row)
+
+bikes=> SELECT * FROM rentals;
+                                  
++-----------+-------------+---------+-------------+---------------+
+| rental_id | customer_id | bike_id | date_rented | date_returned |
++-----------+-------------+---------+-------------+---------------+
+|         2 |           1 |       2 | 2023-06-08  |               |
+|         3 |           1 |       3 | 2023-06-08  |               |
+|         4 |           1 |       4 | 2023-06-08  |               |
+|         5 |           1 |       5 | 2023-06-08  |               |
+|         6 |           2 |       6 | 2023-06-08  |               |
+|         7 |           2 |       7 | 2023-06-08  |               |
+|         1 |           1 |       1 | 2023-06-07  | 2023-06-08    |
++-----------+-------------+---------+-------------+---------------+
+(7 rows)
+
+bikes=> SELECT * FROM bikes ORDER BY bike_id;
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | t         |
+|       2 | Mountain |   28 | f         |
+|       3 | Mountain |   29 | f         |
+|       4 | Road     |   27 | f         |
+|       5 | Road     |   28 | f         |
+|       6 | Road     |   29 | f         |
+|       7 | BMX      |   19 | f         |
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
+bikes=> ^C
+bikes=> 
