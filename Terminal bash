@@ -1,0 +1,482 @@
+That is not a valid bike number.
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+3
+
+Thank you for stopping in.
+
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+1
+
+Here are the bikes we have available:
+1) 27" Mountain Bike
+2) 28" Mountain Bike
+3) 29" Mountain Bike
+4) 27" Road Bike
+5) 28" Road Bike
+6) 29" Road Bike
+
+Which one would you like to rent?
+2
+t
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+1
+
+Here are the bikes we have available:
+1) 27" Mountain Bike
+2) 28" Mountain Bike
+3) 29" Mountain Bike
+4) 27" Road Bike
+5) 28" Road Bike
+6) 29" Road Bike
+
+Which one would you like to rent?
+2
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+1
+
+Here are the bikes we have available:
+1) 27" Mountain Bike
+2) 28" Mountain Bike
+3) 29" Mountain Bike
+4) 27" Road Bike
+5) 28" Road Bike
+6) 29" Road Bike
+7) 19" BMX Bike
+8) 20" BMX Bike
+9) 21" BMX Bike
+
+Which one would you like to rent?
+3
+
+What's your phone number?
+555-5555
+
+What's your name?
+Me
+codeally@8b8ba1f5049e:~/                  codeally@8b8ba1f5049e:~/                  codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+1
+
+Here are the bikes we have available:
+1) 27" Mountain Bike
+2) 28" Mountain Bike
+3) 29" Mountain Bike
+4) 27" Road Bike
+5) 28" Road Bike
+6) 29" Road Bike
+7) 19" BMX Bike
+8) 20" BMX Bike
+9) 21" BMX Bike
+
+Which one would you like to rent?
+1
+
+What's your phone number?
+555-5555
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+1
+
+Here are the bikes we have available:
+2) 28" Mountain Bike
+3) 29" Mountain Bike
+4) 27" Road Bike
+5) 28" Road Bike
+6) 29" Road Bike
+7) 19" BMX Bike
+8) 20" BMX Bike
+9) 21" BMX Bike
+
+Which one would you like to rent?
+2
+
+What's your phone number?
+555-5555
+28 | Mountain
+codeally@8b8ba1f5049e:~/project$ echo '28 | Mountain | sed 's/ /=/g'
+> echo '28 | Mountain' | sed 's/ /=/g'
+> ')
+bash: syntax error near unexpected token `)'
+codeally@8b8ba1f5049e:~/project$ echo '28 | Mountain | sed 's/ /=/g'
+echo '28 | Mountain' | sed 's/ /=/g'
+> 
+> echo '28 | Mountain | sed 's/ /=/g'
+echo '28 | Mountain' | sed 's/ /=/g'
+
+bash: Mountain | sed s/: No such file or directory
+bash: Mountain: command not found
+28=|=Mountain
+codeally@8b8ba1f5049e:~/project$ echo '28 | Mountain' | sed 's/ //g'
+28|Mountain
+codeally@8b8ba1f5049e:~/project$ echo '28 | Mountain' | sed 's/ //'
+28| Mountain
+codeally@8b8ba1f5049e:~/project$ echo '28 | Mountain' | sed 's/ |//'
+28 Mountain
+codeally@8b8ba1f5049e:~/project$ echo '28 | Mountain' | sed 's/ |/"/'
+28" Mountain
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+1
+
+Here are the bikes we have available:
+3) 29" Mountain Bike
+4) 27" Road Bike
+5) 28" Road Bike
+6) 29" Road Bike
+7) 19" BMX Bike
+8) 20" BMX Bike
+9) 21" BMX Bike
+
+Which one would you like to rent?
+3
+
+What's your phone number?
+555-5555
+29" Mountain
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+1
+
+Here are the bikes we have available:
+4) 27" Road Bike
+5) 28" Road Bike
+6) 29" Road Bike
+7) 19" BMX Bike
+8) 20" BMX Bike
+9) 21" BMX Bike
+
+Which one would you like to rent?
+4
+
+What's your phone number?
+555-5555
+
+I have put you down for the 27" Road Bike,  Me.
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+3
+
+Thank you for stopping in.
+
+codeally@8b8ba1f5049e:~/project$ echo ' M e '
+ M e 
+codeally@8b8ba1f5049e:~/project$ echo "$(echo ' M e ')."
+ M e .
+codeally@8b8ba1f5049e:~/project$ echo "$(echo ' M e ' | sed 's/ //')."
+M e .
+codeally@8b8ba1f5049e:~/project$ echo "$(echo ' M e ' | sed 's/ //g')."
+Me.
+codeally@8b8ba1f5049e:~/project$ echo "$(echo ' M e ' | sed 's/^ //g')."
+M e .
+codeally@8b8ba1f5049e:~/project$ echo "$(echo '  M e ' | sed 's/^ //g')."
+ M e .
+codeally@8b8ba1f5049e:~/project$ echo "$(echo '   M e ' | sed 's/^ //g')."
+  M e .
+codeally@8b8ba1f5049e:~/project$ echo "$(echo '   M e ' | sed 's/^ *//g')."
+M e .
+codeally@8b8ba1f5049e:~/project$ echo "$(echo '   M e ' | sed 's/ $//g')."
+   M e.
+codeally@8b8ba1f5049e:~/project$ echo "$(echo '   M e   ' | sed 's/ $//g')."
+   M e  .
+codeally@8b8ba1f5049e:~/project$ echo "$(echo '   M e   ' | sed 's/ *$//g')."
+   M e.
+codeally@8b8ba1f5049e:~/project$ echo "$(echo '   M e   ' | sed 's/^ *| *$//g')."
+   M e   .
+codeally@8b8ba1f5049e:~/project$ man sed
+codeally@8b8ba1f5049e:~/project$ echo "$(echo '   M e   ' | sed -E 's/^ *| *$//g')."
+M e.
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+1
+
+Here are the bikes we have available:
+5) 28" Road Bike
+6) 29" Road Bike
+7) 19" BMX Bike
+8) 20" BMX Bike
+9) 21" BMX Bike
+
+Which one would you like to rent?
+5
+
+What's your phone number?
+555-5555
+
+I have put you down for the 28" Road Bike, Me.
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+3
+
+Thank you for stopping in.
+
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+1
+
+Here are the bikes we have available:
+6) 29" Road Bike
+7) 19" BMX Bike
+8) 20" BMX Bike
+9) 21" BMX Bike
+
+Which one would you like to rent?
+6
+
+What's your phone number?
+000-0000
+
+What's your name?
+Test
+
+I have put you down for the 29" Road Bike, Test.
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+3
+
+Thank you for stopping in.
+
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+1
+
+Here are the bikes we have available:
+7) 19" BMX Bike
+8) 20" BMX Bike
+9) 21" BMX Bike
+
+Which one would you like to rent?
+7
+
+What's your phone number?
+000-0000
+
+I have put you down for the 19" BMX Bike, Test.
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+3
+
+Thank you for stopping in.
+
+codeally@8b8ba1f5049e:~/project$               codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh 
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+2
+
+What's your phone number?
+666-6666
+
+I could not find a record for that phone number.
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+3
+
+Thank you for stopping in.
+
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+2
+
+What's your phone number?
+555-5555
+       1 | Mountain |   27
+       2 | Mountain |   28
+       3 | Mountain |   29
+       4 | Road     |   27
+       5 | Road     |   28
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+2
+
+What's your phone number?
+555-5555
+
+Here are your rentals:
+       1 | Mountain |   27
+       2 | Mountain |   28
+       3 | Mountain |   29
+       4 | Road     |   27
+       5 | Road     |   28
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+2
+
+What's your phone number?
+555-5555
+
+Here are your rentals:
+1) 27" Mountain Bike
+2) 28" Mountain Bike
+3) 29" Mountain Bike
+4) 27" Road Bike
+5) 28" Road Bike
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+./bike-shop.sh: line 133: syntax error near unexpected token `fi'
+./bike-shop.sh: line 133: `   fi'
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+./bike-shop.sh: line 138: syntax error near unexpected token `fi'
+./bike-shop.sh: line 138: `   fi'
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+./bike-shop.sh: line 138: syntax error near unexpected token `fi'
+./bike-shop.sh: line 138: `   fi'
+codeally@8b8ba1f5049e:~/project$ ./bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+2
+
+What's your phone number?
+555-5555
+
+Here are your rentals:
+1) 27" Mountain Bike
+2) 28" Mountain Bike
+3) 29" Mountain Bike
+4) 27" Road Bike
+5) 28" Road Bike
+
+Which one would you like to return?
+1
+
+Thank you for returning your bike.
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+3
+
+Thank you for stopping in.
+
+codeally@8b8codeally@8b8codeally@8b8ba1f5049e:~/codeally@8b8ba1f5049e:~/codeally@8b8ba1f5049e:~/project$ 
