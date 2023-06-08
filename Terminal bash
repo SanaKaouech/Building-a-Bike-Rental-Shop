@@ -480,3 +480,55 @@ How may I help you?
 Thank you for stopping in.
 
 codeally@8b8codeally@8b8codeally@8b8ba1f5049e:~/codeally@8b8ba1f5049e:~/codeally@8b8ba1f5049e:~/project$ 
+codeally@8b8ba1f5049e:~/project$ .
+/bike-shop.sh
+
+~~~~~ Bike Rental Shop ~~~~~
+
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+1
+
+Here are the bikes we have available:
+1) 27" Mountain Bike
+8) 20" BMX Bike
+9) 21" BMX Bike
+
+Which one would you like to rent?
+8
+
+What's your phone number?
+777-7777
+
+What's your name?
+Sisita
+
+I have put you down for the 20" BMX Bike, Sisita.
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+2
+
+What's your phone number?
+777-7777
+
+Here are your rentals:
+8) 20" BMX Bike
+
+Which one would you like to return?
+8
+
+Thank you for returning your bike.
+How may I help you?
+
+1. Rent a bike
+2. Return a bike
+3. Exit
+3
+
+Thank you for stopping in.
